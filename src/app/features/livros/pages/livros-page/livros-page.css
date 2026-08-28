@@ -1,0 +1,117 @@
+.cabecalho-pagina {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.cabecalho-pagina h1 {
+  margin: 5px 0 7px;
+  color: #0f172a;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.cabecalho-pagina p {
+  margin: 0;
+  color: #64748b;
+}
+
+.rotulo-pagina {
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cabecalho-pagina button {
+  padding: 11px 17px;
+  border: 0;
+  border-radius: 10px;
+  background: #1d4ed8;
+  box-shadow: 0 7px 16px rgb(29 78 216 / 22%);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 160ms ease, translate 160ms ease;
+}
+
+.cabecalho-pagina button:hover {
+  translate: 0 -1px;
+  background: #1e40af;
+}
+
+.cabecalho-pagina button:focus-visible {
+  outline: 3px solid rgb(37 99 235 / 25%);
+  outline-offset: 3px;
+}
+
+.secao-formulario {
+  margin-bottom: 28px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  background: rgb(255 255 255 / 90%);
+  box-shadow: 0 16px 36px rgb(15 23 42 / 7%);
+}
+
+.cabecalho-formulario {
+  margin-bottom: 26px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cabecalho-formulario > span {
+  color: #2563eb;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.cabecalho-formulario h2 {
+  margin: 5px 0 6px;
+  color: #172033;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.7rem;
+}
+
+.cabecalho-formulario p {
+  margin: 0;
+  color: #64748b;
+  font-size: .88rem;
+}
+
+.mensagem-erro {
+  color: #b42318;
+}
+
+.mensagem-formulario {
+  margin: 18px 0 0;
+  color: #475569;
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .cabecalho-pagina {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+
+  .cabecalho-pagina button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cabecalho-pagina button {
+    transition: none;
+  }
+}

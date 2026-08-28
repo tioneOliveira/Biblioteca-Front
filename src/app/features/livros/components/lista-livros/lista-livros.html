@@ -1,0 +1,23 @@
+@if (carregando()) {
+  <div class="estado" role="status">
+    <span class="indicador-carregamento" aria-hidden="true"></span>
+    <p>Carregando livros...</p>
+  </div>
+} @else if (erro()) {
+  <div class="estado estado-erro" role="alert">
+    <span aria-hidden="true">!</span>
+    <p>{{ erro() }}</p>
+  </div>
+} @else if (livros().length === 0) {
+  <div class="estado">
+    <span aria-hidden="true">⌕</span>
+    <p>Nenhum livro encontrado.</p>
+    <small>Tente mudar o termo da busca ou o filtro de status.</small>
+  </div>
+} @else {
+  <section class="grade-livros" aria-label="Catálogo de livros">
+    @for (livro of livros(); track livro.id) {
+      <app-livro-card [livro]="livro" />
+    }
+  </section>
+}

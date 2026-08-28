@@ -1,0 +1,104 @@
+:host {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.filtros {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 82%);
+  box-shadow: 0 4px 14px rgb(15 23 42 / 4%);
+  backdrop-filter: blur(8px);
+}
+
+.campo-pesquisa { position: relative; display: block; }
+
+.campo-pesquisa input,
+.campo-status select {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #fff;
+  color: #334155;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.campo-pesquisa input { padding: 0 14px 0 42px; }
+.campo-pesquisa input::placeholder { color: #94a3b8; }
+
+.campo-status {
+  display: grid;
+  gap: 5px;
+  color: #64748b;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.campo-status select {
+  min-width: 155px;
+  padding: 0 34px 0 12px;
+  color: #334155;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.campo-pesquisa input:focus,
+.campo-status select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 12%);
+}
+
+.icone-pesquisa {
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  left: 16px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #64748b;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.icone-pesquisa::after {
+  position: absolute;
+  right: -5px;
+  bottom: -3px;
+  width: 6px;
+  height: 2px;
+  border-radius: 2px;
+  background: #64748b;
+  content: '';
+  rotate: 45deg;
+}
+
+.rotulo-acessivel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .filtros { grid-template-columns: 1fr; }
+  .campo-status select { min-width: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campo-pesquisa input,
+  .campo-status select { transition: none; }
+}

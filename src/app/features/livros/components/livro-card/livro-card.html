@@ -1,0 +1,43 @@
+<article class="card" [attr.data-status]="livro().status">
+  <div class="capa-container">
+    @if (livro().url_capa) {
+      <img
+        class="capa"
+        [src]="livro().url_capa"
+        [alt]="'Capa do livro ' + livro().titulo"
+        loading="lazy"
+      />
+    } @else {
+      <div class="capa-placeholder" aria-hidden="true">
+        <span>{{ livro().titulo.charAt(0) }}</span>
+      </div>
+    }
+
+    <span class="categoria">{{ livro().categoria }}</span>
+  </div>
+
+  <div class="conteudo">
+    <div class="titulo-grupo">
+      <h2>{{ livro().titulo }}</h2>
+      <p class="autor">por {{ livro().autor }}</p>
+    </div>
+
+    <p class="descricao">
+      {{ livro().descricao || 'Este livro ainda não possui uma descrição.' }}
+    </p>
+
+    <div class="rodape">
+      <div class="metadados">
+        <span class="ano" [attr.aria-label]="'Publicado em ' + livro().ano">
+          {{ livro().ano }}
+        </span>
+        <span class="status">{{ livro().status }}</span>
+      </div>
+
+      <a [routerLink]="['/livros', livro().id]" [attr.aria-label]="'Ver detalhes de ' + livro().titulo">
+        Ver detalhes
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</article>

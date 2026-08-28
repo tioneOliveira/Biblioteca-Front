@@ -1,0 +1,106 @@
+<form class="formulario" [formGroup]="formulario" (ngSubmit)="enviar()" novalidate>
+  <div class="campos-linha campos-principais">
+    <div class="campo">
+      <label for="titulo">Título <span aria-hidden="true">*</span></label>
+      <input
+        id="titulo"
+        type="text"
+        formControlName="titulo"
+        placeholder="Ex.: Dom Casmurro"
+        autocomplete="off"
+        [attr.aria-invalid]="campoInvalido('titulo')"
+      />
+      @if (campoInvalido('titulo')) {
+        <small>Informe um título.</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="autor">Autor <span aria-hidden="true">*</span></label>
+      <input
+        id="autor"
+        type="text"
+        formControlName="autor"
+        placeholder="Nome do autor"
+        autocomplete="off"
+        [attr.aria-invalid]="campoInvalido('autor')"
+      />
+      @if (campoInvalido('autor')) {
+        <small>Informe o autor.</small>
+      }
+    </div>
+  </div>
+
+  <div class="campos-linha campos-metadados">
+    <div class="campo">
+      <label for="categoria">Categoria <span aria-hidden="true">*</span></label>
+      <input
+        id="categoria"
+        type="text"
+        formControlName="categoria"
+        placeholder="Ex.: Literatura brasileira"
+        autocomplete="off"
+        [attr.aria-invalid]="campoInvalido('categoria')"
+      />
+      @if (campoInvalido('categoria')) {
+        <small>Informe a categoria.</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="ano">Ano <span aria-hidden="true">*</span></label>
+      <input
+        id="ano"
+        type="number"
+        formControlName="ano"
+        min="0"
+        [attr.aria-invalid]="campoInvalido('ano')"
+      />
+      @if (campoInvalido('ano')) {
+        <small>Informe um ano válido.</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="status">Status <span aria-hidden="true">*</span></label>
+      <select id="status" formControlName="status">
+        <option value="disponivel">Disponível</option>
+        <option value="emprestado">Emprestado</option>
+        <option value="extraviado">Extraviado</option>
+        <option value="danificado">Danificado</option>
+        <option value="reservado">Reservado</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="descricao">Descrição</label>
+    <textarea
+      id="descricao"
+      rows="5"
+      formControlName="descricao"
+      placeholder="Escreva uma breve sinopse ou observação sobre o livro"
+    ></textarea>
+  </div>
+
+  <div class="campo">
+    <label for="url_capa">URL da capa</label>
+    <input
+      id="url_capa"
+      type="url"
+      formControlName="url_capa"
+      placeholder="https://exemplo.com/capa.jpg"
+      inputmode="url"
+      autocomplete="url"
+    />
+    <span class="ajuda">Para melhor resultado, use uma imagem vertical na proporção 5:8.</span>
+  </div>
+
+  <div class="acoes-formulario">
+    <span class="campos-obrigatorios"><strong>*</strong> Campos obrigatórios</span>
+    <div>
+      <button type="button" class="botao-secundario" (click)="cancelar.emit()">Cancelar</button>
+      <button type="submit">Adicionar livro</button>
+    </div>
+  </div>
+</form>

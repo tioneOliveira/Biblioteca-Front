@@ -1,0 +1,40 @@
+<main class="container">
+  <div class="cabecalho-pagina">
+    <div>
+      <span class="rotulo-pagina">Biblioteca</span>
+      <h1>Explore nossos livros</h1>
+      <p>Encontre sua próxima leitura no acervo.</p>
+    </div>
+    <button type="button" (click)="abrirFormulario()">Novo livro</button>
+  </div>
+
+  @if (exibindoFormulario()) {
+    <section class="secao-formulario" aria-labelledby="titulo-formulario">
+      <div class="cabecalho-formulario">
+        <span>Novo item</span>
+        <h2 id="titulo-formulario">Adicionar livro</h2>
+        <p>Preencha as informações abaixo para incluir um livro no acervo.</p>
+      </div>
+      <app-livro-formulario (salvar)="adicionarLivro($event)" (cancelar)="fecharFormulario()" />
+      @if (salvando()) {
+        <p class="mensagem-formulario" role="status">Salvando livro...</p>
+      }
+      @if (erroAoSalvar(); as mensagem) {
+        <p class="mensagem-erro">{{ mensagem }}</p>
+      }
+    </section>
+  }
+
+  <app-filtro-livros
+    [pesquisa]="pesquisa()"
+    [status]="filtroStatus()"
+    (pesquisaChange)="atualizarPesquisa($event)"
+    (statusChange)="atualizarStatus($event)"
+  />
+
+  <app-lista-livros
+    [livros]="livrosFiltrados()"
+    [carregando]="carregando()"
+    [erro]="erro()"
+  />
+</main>
